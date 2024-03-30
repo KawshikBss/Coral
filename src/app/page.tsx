@@ -1,113 +1,111 @@
 import Image from "next/image";
+import Link from "next/link";
+import Carousel from "./ui/home/carousel";
+import clsx from "clsx";
+import { ArrowRightIcon } from "@heroicons/react/24/solid";
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    return (
+        <main className="w-full h-full">
+            <div className="w-[90%] h-[514px] bg-[url('/home-banner.png')] bg-no-repeat bg-cover rounded-xl mt-6 mb-16 mx-auto relative">
+                <div className="text-[#1B4B66] absolute inset-y-0 right-0 h-fit my-auto pt-6 pb-14 pl-12 rounded-l-3xl bg-[#DEDEDE]/70">
+                    <h1 className="font-extrabold text-6xl">Carry your Funk</h1>
+                    <p className="font-medium text-2xl w-3/4 mb-8">
+                        Trendy handbags collection for your party animal
+                    </p>
+                    <Link
+                        href={""}
+                        className="text-white text-base py-3 px-8 rounded-lg bg-[#1B4B66]"
+                    >
+                        See more
+                    </Link>
+                </div>
+            </div>
+            <Carousel
+                heading="New Arrivals"
+                allLink="/"
+                items={[1, 2, 3, 4, 1, 2, 3, 4]}
             />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+            <div className="flex flex-col justify-between items-start gap-6 px-5 pt-8 pb-16 mt-8 mb-16 bg-[#1B4B66]">
+                <h1 className="text-white font-semibold text-3xl">
+                    Handpicked Collections
+                </h1>
+                <div className="w-full overflow-x-scroll">
+                    <div className="w-max flex flex-row justify-between items-center gap-10">
+                        {[1, 2, 3, 4, 1, 2, 3, 4].map((item, index) => (
+                            <div
+                                className="bg-cover w-72 h-72 rounded-md relative"
+                                style={{
+                                    backgroundImage: `url('/products/card${item}.png')`,
+                                }}
+                                key={index}
+                            >
+                                <h1 className="absolute bottom-0 left-0 text-[#171520] font-semibold text-2xl pl-4 pb-4">
+                                    Product {item.toString()}
+                                </h1>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className="w-full px-5 mb-16 flex flex-col gap-6 justify-between items-start">
+                <h1 className="text-[#13101E] font-semibold text-4xl">
+                    Shop by Brands
+                </h1>
+                <div className="w-full flex justify-center items-center overflow-x-scroll">
+                    <div className="w-max flex flex-row justify-between items-center gap-10">
+                        {[1, 2, 3, 4, 5, 6].map((item, index) => (
+                            <div
+                                key={index}
+                                className="rounded-lg bg-[#F4F4F4] w-40 h-40 flex justify-center items-center"
+                            >
+                                <Image
+                                    src={`/brands/brand${item}.png`}
+                                    alt={item.toString()}
+                                    width={100}
+                                    height={60}
+                                    className="object-contain object-center"
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className="bg-[url('/home-banner-2.png')] bg-cover bg-center w-[95vw] h-[50vh] mx-auto mb-10 px-4 rounded-3xl text-[#97451F] flex flex-col gap-5 justify-center items-start pl-16">
+                <p className="uppercase font-normal text-3xl">Lifestyle</p>
+                <h1 className="uppercase font-bold text-5xl">
+                    Makeup Accessories
+                    <br />
+                    from Top Brands
+                </h1>
+            </div>
+            <div className="w-[95vw] h-[35vh] mx-auto mb-16 flex flex-row gap-8 justify-between items-center">
+                <div className="w-1/2 h-full bg-[url('/home-banner-3.png')] bg-cover bg-center rounded-3xl text-[#A53F64] flex flex-col gap-5 justify-center items-end pr-9">
+                    <h1 className="uppercase font-bold text-5xl">
+                        Skincare
+                        <br />
+                        Essentials
+                    </h1>
+                    <Link
+                        href={"/"}
+                        className="bg-white rounded-full p-3 text-[#A53F64]"
+                    >
+                        <ArrowRightIcon width={40} height={40} />
+                    </Link>
+                </div>
+                <div className="w-1/2 h-full bg-[url('/home-banner-4.png')] bg-cover bg-center rounded-3xl text-[#1B4B66] flex flex-col gap-5 justify-center items-end pr-10">
+                    <h1 className="uppercase font-bold text-5xl">
+                        Facepacks
+                        <br />& Peels
+                    </h1>
+                    <Link
+                        href={"/"}
+                        className="bg-white rounded-full p-3 text-[#1B4B66]"
+                    >
+                        <ArrowRightIcon width={40} height={40} />
+                    </Link>
+                </div>
+            </div>
+        </main>
+    );
 }
