@@ -102,8 +102,8 @@ const socialLinks = [
 
 function Footer({}: Props) {
     return (
-        <div className="w-full bg-[#1B4B66] flex flex-row justify-between items-start px-16 pt-8 pb-20">
-            <div className="flex flex-row justify-between items-start gap-16">
+        <div className="w-full bg-[#1B4B66] flex flex-col gap-4 md:gap-0 md:flex-row justify-between items-start px-16 pt-8 pb-20">
+            <div className="flex flex-col md:flex-row justify-between items-start gap-4 md:gap-16">
                 <ul className="flex flex-col justify-between items-start gap-2 text-[#B6B6B6] font-medium text-base">
                     <li className="text-white">Shop by Category</li>
                     {categoryLinks.map((item, index) => (
@@ -129,7 +129,7 @@ function Footer({}: Props) {
                     ))}
                 </ul>
             </div>
-            <div className="flex flex-col justify-between items-end gap-6">
+            <div className="flex flex-col justify-between items-center md:items-end gap-6 self-center md:self-start">
                 <div className="flex flex-row justify-between items-center gap-4">
                     {socialLinks.map((item, index) => (
                         <Link key={index} href={item.href}>
@@ -143,7 +143,7 @@ function Footer({}: Props) {
                     ))}
                 </div>
                 <h1 className="text-white font-medium text-base">
-                    KawshikBss
+                    @KawshikBss
                 </h1>
             </div>
         </div>
