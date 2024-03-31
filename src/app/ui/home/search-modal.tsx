@@ -2,6 +2,7 @@
 import { MagnifyingGlassIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
 import Link from "next/link";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 
 type Props = {
@@ -11,6 +12,16 @@ type Props = {
 
 function SearchModal({ show, toggle }: Props) {
     const [query, setQuery] = useState("");
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const { replace } = useRouter();
+    const handleSearch = () => {
+        const params = new URLSearchParams(searchParams);
+        params.set("query", query);
+        toggle();
+        setQuery("");
+        replace(`${pathname}?${params.toString()}`);
+    };
     return (
         <div
             className={`${
@@ -24,19 +35,17 @@ function SearchModal({ show, toggle }: Props) {
                         placeholder="Search for products or brands....."
                         onChange={(event) => setQuery(event.target.value)}
                     />
-                    <Link
+                    <MagnifyingGlassIcon
                         className={clsx(
-                            query?.length ? "scale-1" : "w-0 h-0 scale-0",
-                            "w-6 text-[#13101E] transition-all duration-500 ease-in-out"
+                            query?.length ? "w-6 scale-1" : "w-0 h-0 scale-0",
+                            "text-[#13101E] transition-all duration-500 ease-in-out"
                         )}
-                        href={{ pathname: "/", query: query }}
-                    >
-                        <MagnifyingGlassIcon />
-                    </Link>
+                        onClick={handleSearch}
+                    />
                     <XMarkIcon
                         className={clsx(
-                            query?.length ? "w-0 h-0 scale-0" : "scale-1",
-                            "w-6 text-[#13101E] transition-all duration-500 ease-in-out"
+                            query?.length ? "w-0 h-0 scale-0" : "w-6 scale-1",
+                            "text-[#13101E] transition-all duration-500 ease-in-out"
                         )}
                         onClick={toggle}
                     />
