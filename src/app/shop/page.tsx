@@ -13,7 +13,7 @@ function Shop({}: Props) {
                 alt="shop-banner"
                 width={1240}
                 height={400}
-                className="rounded-xl mt-6 mb-16 mx-auto"
+                className="rounded-xl px-2 md:px-0 mt-3 md:mt-6 mb-8 md:mb-16 mx-auto"
             />
             <BreadCrumbs
                 breadCrumbs={[
@@ -21,7 +21,7 @@ function Shop({}: Props) {
                     { name: "Handbag", href: "/shop" },
                 ]}
             />
-            <h1 className="text-[#1B4B66] text-4xl font-semibold pt-6 pb-11 px-5">
+            <h1 className="text-[#1B4B66] text-2xl md:text-4xl font-semibold pt-4 md:pt-6 pb-4 md:pb-11 px-4">
                 Handbags
             </h1>
             <ProductCatalog />

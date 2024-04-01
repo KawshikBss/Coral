@@ -27,8 +27,14 @@ function SearchModal({ show, toggle }: Props) {
             className={`${
                 show ? "scale-1" : "scale-0"
             }  transition-all duration-500 ease-in-out bg-black/40 overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-start w-full h-full p-6`}
+            onClick={toggle}
         >
-            <div className="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <div
+                className="relative bg-white rounded-lg shadow dark:bg-gray-700"
+                onClick={(event) => {
+                    event.stopPropagation();
+                }}
+            >
                 <span className="flex felx-row justify-between items-center bg-[#F1F1F1] rounded gap-1 py-3 px-2">
                     <input
                         className="placeholder:text-[#626262] w-80 bg-transparent"

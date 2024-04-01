@@ -10,7 +10,7 @@ type Props = {
 
 function BreadCrumbs({ breadCrumbs }: Props) {
     return (
-        <ul className="w-full px-5 flex flex-row justify-start items-center gap-1">
+        <ul className="w-full px-4 flex flex-row justify-start items-center gap-1">
             {breadCrumbs.map((item, index) => (
                 <Fragment key={index}>
                     <li
