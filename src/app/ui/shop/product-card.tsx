@@ -33,36 +33,78 @@ function Card({ item }: Props) {
             <span className="flex flex-row items-center gap-4 text-[#1B4B66] text-sm font-medium">
                 <span className="flex flex-row items-center gap-1 text-[#FF8C4B]">
                     {item < 1 ? (
-                        <StarIconOutline width={24} height={24} />
+                        <StarIconOutline
+                            width={24}
+                            height={24}
+                            className="w-3 h-3 md:w-6 md:h-6"
+                        />
                     ) : (
-                        <StarIconSolid width={24} height={24} />
+                        <StarIconSolid
+                            width={24}
+                            height={24}
+                            className="w-3 h-3 md:w-6 md:h-6"
+                        />
                     )}
                     {item < 2 ? (
-                        <StarIconOutline width={24} height={24} />
+                        <StarIconOutline
+                            width={24}
+                            height={24}
+                            className="w-3 h-3 md:w-6 md:h-6"
+                        />
                     ) : (
-                        <StarIconSolid width={24} height={24} />
+                        <StarIconSolid
+                            width={24}
+                            height={24}
+                            className="w-3 h-3 md:w-6 md:h-6"
+                        />
                     )}
                     {item < 3 ? (
-                        <StarIconOutline width={24} height={24} />
+                        <StarIconOutline
+                            width={24}
+                            height={24}
+                            className="w-3 h-3 md:w-6 md:h-6"
+                        />
                     ) : (
-                        <StarIconSolid width={24} height={24} />
+                        <StarIconSolid
+                            width={24}
+                            height={24}
+                            className="w-3 h-3 md:w-6 md:h-6"
+                        />
                     )}
                     {item < 4 ? (
-                        <StarIconOutline width={24} height={24} />
+                        <StarIconOutline
+                            width={24}
+                            height={24}
+                            className="w-3 h-3 md:w-6 md:h-6"
+                        />
                     ) : (
-                        <StarIconSolid width={24} height={24} />
+                        <StarIconSolid
+                            width={24}
+                            height={24}
+                            className="w-3 h-3 md:w-6 md:h-6"
+                        />
                     )}
                     {item < 5 ? (
-                        <StarIconOutline width={24} height={24} />
+                        <StarIconOutline
+                            width={24}
+                            height={24}
+                            className="w-3 h-3 md:w-6 md:h-6"
+                        />
                     ) : (
-                        <StarIconSolid width={24} height={24} />
+                        <StarIconSolid
+                            width={24}
+                            height={24}
+                            className="w-3 h-3 md:w-6 md:h-6"
+                        />
                     )}
                 </span>
-                <p>{item * 10 + item} Ratings</p>
+                <p className="text-[#1B4B66] text-xs md:text-sm font-medium">
+                    {item * 10 + item} Ratings
+                </p>
             </span>
             <span className="text-[#171520] font-medium text-sm md:text-base">
                 {`$${100}`}{" "}
-                <span className="text-sm text-[#626262] line-through">
+                <span className="text-xs md:text-sm text-[#626262] line-through">
                     $200
                 </span>{" "}
                 <span className="text-[#E21D1D]">50% off</span>
