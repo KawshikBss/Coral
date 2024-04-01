@@ -16,7 +16,7 @@ export default function Home() {
                         Trendy handbags collection for your party animal
                     </p>
                     <Link
-                        href={""}
+                        href={"/shop"}
                         className="text-white text-sm md:text-base py-3 px-8 rounded-lg bg-[#1B4B66]"
                     >
                         See more
@@ -25,7 +25,7 @@ export default function Home() {
             </div>
             <Carousel
                 heading="New Arrivals"
-                allLink="/"
+                allLink="/shop"
                 items={[1, 2, 3, 4, 1, 2, 3, 4]}
             />
             <div className="flex flex-col justify-between items-start gap-6 px-5 pt-8 pb-16 mt-8 mb-16 bg-[#1B4B66]">
