@@ -7,7 +7,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import SearchModal from "../home/search-modal";
 
 type Props = {};
@@ -74,7 +74,9 @@ function Navbar({}: Props) {
                     <ShoppingBagIcon className="w-6 text-[#1B4B66]" />
                 </div>
             </div>
-            <SearchModal show={showSearch} toggle={toggleSearch} />
+            <Suspense fallback={<></>}>
+                <SearchModal show={showSearch} toggle={toggleSearch} />
+            </Suspense>
         </div>
     );
 }
