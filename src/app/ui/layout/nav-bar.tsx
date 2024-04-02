@@ -74,7 +74,7 @@ function Navbar({}: Props) {
                     <ShoppingBagIcon className="w-6 text-[#1B4B66]" />
                 </div>
             </div>
-            <Suspense fallback={<></>}>
+            <Suspense fallback={<>Loading...</>}>
                 <SearchModal show={showSearch} toggle={toggleSearch} />
             </Suspense>
         </div>
