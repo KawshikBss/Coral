@@ -15,23 +15,23 @@ type Props = {};
 const navLinks = [
     {
         name: "Handbags",
-        href: "",
+        href: "/shop?category=handbags",
     },
     {
         name: "Watches",
-        href: "",
+        href: "/shop?category=watches",
     },
     {
         name: "Skincare",
-        href: "",
+        href: "/shop?category=skincare",
     },
     {
         name: "Jewellery",
-        href: "",
+        href: "/shop?category=jewellery",
     },
     {
         name: "Apparels",
-        href: "",
+        href: "/shop?category=apparels",
     },
 ];
 
