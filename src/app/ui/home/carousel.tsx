@@ -1,11 +1,12 @@
 import Link from "next/link";
 import React from "react";
 import Card from "./carousel-card";
+import { Product } from "@/app/lib/defenitions";
 
 type Props = {
     heading: string;
     allLink: string;
-    items: Number[];
+    items: Product[];
 };
 
 function Carousel({ heading, allLink, items }: Props) {
@@ -25,14 +26,7 @@ function Carousel({ heading, allLink, items }: Props) {
             <div className="w-[90vw] overflow-x-scroll">
                 <div className="w-max flex flex-row gap-10 justify-between items-center snap-mandatory snap-x">
                     {items.map((item, index) => (
-                        <Card
-                            key={index}
-                            title={"Product " + item.toString()}
-                            category="Fashion"
-                            price={100}
-                            href="/"
-                            image={`/products/card${item}.png`}
-                        />
+                        <Card key={index} product={item} />
                     ))}
                 </div>
             </div>

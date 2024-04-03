@@ -3,6 +3,7 @@ import Link from "next/link";
 import Carousel from "./ui/home/carousel";
 import clsx from "clsx";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
+import { products } from "./lib/placeholder-data";
 
 export default function Home() {
     return (
@@ -23,11 +24,7 @@ export default function Home() {
                     </Link>
                 </div>
             </div>
-            <Carousel
-                heading="New Arrivals"
-                allLink="/shop"
-                items={[1, 2, 3, 4, 1, 2, 3, 4]}
-            />
+            <Carousel heading="New Arrivals" allLink="/shop" items={products} />
             <div className="flex flex-col justify-between items-start gap-6 px-5 pt-8 pb-16 mt-8 mb-16 bg-[#1B4B66]">
                 <h1 className="text-white font-semibold text-3xl">
                     Handpicked Collections

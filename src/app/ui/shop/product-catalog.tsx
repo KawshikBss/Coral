@@ -4,6 +4,7 @@ import FilterPanel from "./filter-panel";
 import Card from "./product-card";
 import { FunnelIcon } from "@heroicons/react/24/outline";
 import FilterModal from "./filter-modal";
+import { products } from "@/app/lib/placeholder-data";
 
 type Props = {};
 
@@ -47,8 +48,8 @@ function ProductCatalog({}: Props) {
                     </span>
                 </div>
                 <div className="w-full flex flex-wrap justify-center items-start gap-8 gap-y-8 md:gap-y-16 mb-6">
-                    {[1, 2, 3, 4, 1, 2, 3, 4].map((item, index) => (
-                        <Card item={item} key={index} />
+                    {products.map((item, index) => (
+                        <Card product={item} key={index} />
                     ))}
                 </div>
             </div>
