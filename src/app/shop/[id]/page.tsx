@@ -33,7 +33,7 @@ function SingleProduct({ params }: Props) {
                     { name: product.name, href: `/shop/${product.id}` },
                 ]}
             />
-            <div className="w-full px-5 pt-4 pb-14 flex flex-row justify-between items-start gap-6">
+            <div className="w-full px-5 pt-4 pb-14 flex flex-col md:flex-row justify-between items-start gap-6">
                 <div className="w-full flex flex-col justify-between items-center">
                     <Image
                         src={product.thumbnail}
@@ -57,7 +57,7 @@ function SingleProduct({ params }: Props) {
                         <ChevronRightIcon width={24} height={24} />
                     </div>
                 </div>
-                <div className="w-1/2 flex flex-col justify-start items-start">
+                <div className="w-full md:w-1/2 flex flex-col justify-start items-start">
                     <h1 className="text-[#13101E] font-semibold text-4xl">
                         {product.name}
                     </h1>
@@ -70,65 +70,65 @@ function SingleProduct({ params }: Props) {
                                 <StarIconOutline
                                     width={24}
                                     height={24}
-                                    className="w-3 h-3 md:w-6 md:h-6"
+                                    className="w-6 h-6"
                                 />
                             ) : (
                                 <StarIconSolid
                                     width={24}
                                     height={24}
-                                    className="w-3 h-3 md:w-6 md:h-6"
+                                    className="w-6 h-6"
                                 />
                             )}
                             {product.rating && product.rating < 2 ? (
                                 <StarIconOutline
                                     width={24}
                                     height={24}
-                                    className="w-3 h-3 md:w-6 md:h-6"
+                                    className="w-6 h-6"
                                 />
                             ) : (
                                 <StarIconSolid
                                     width={24}
                                     height={24}
-                                    className="w-3 h-3 md:w-6 md:h-6"
+                                    className="w-6 h-6"
                                 />
                             )}
                             {product.rating && product.rating < 3 ? (
                                 <StarIconOutline
                                     width={24}
                                     height={24}
-                                    className="w-3 h-3 md:w-6 md:h-6"
+                                    className="w-6 h-6"
                                 />
                             ) : (
                                 <StarIconSolid
                                     width={24}
                                     height={24}
-                                    className="w-3 h-3 md:w-6 md:h-6"
+                                    className="w-6 h-6"
                                 />
                             )}
                             {product.rating && product.rating < 4 ? (
                                 <StarIconOutline
                                     width={24}
                                     height={24}
-                                    className="w-3 h-3 md:w-6 md:h-6"
+                                    className="w-6 h-6"
                                 />
                             ) : (
                                 <StarIconSolid
                                     width={24}
                                     height={24}
-                                    className="w-3 h-3 md:w-6 md:h-6"
+                                    className="w-6 h-6"
                                 />
                             )}
                             {product.rating && product.rating < 5 ? (
                                 <StarIconOutline
                                     width={24}
                                     height={24}
-                                    className="w-3 h-3 md:w-6 md:h-6"
+                                    className="w-6 h-6"
                                 />
                             ) : (
                                 <StarIconSolid
                                     width={24}
                                     height={24}
-                                    className="w-3 h-3 md:w-6 md:h-6"
+                                    className="w-6 h-6"
                                 />
                             )}
                         </span>
@@ -136,10 +136,10 @@ function SingleProduct({ params }: Props) {
                             10+ Ratings
                         </p>
                     </span>
-                    <span className="text-[#171520] font-bold text-4xl my-6">
+                    <span className="text-[#171520] font-bold text-2xl md:text-4xl my-6">
                         ${product.price}{" "}
                         {product.discount ? (
-                            <span className="text-3xl text-[#B6B6B6] line-through">
+                            <span className="text-xl md:text-3xl text-[#B6B6B6] line-through">
                                 $200
                             </span>
                         ) : (
@@ -211,45 +211,34 @@ function SingleProduct({ params }: Props) {
                     </div>
                 </div>
             </div>
-            <div className="w-full flex flex-col mt-14 mb-24 px-5 gap-6">
-                <div className="w-full py-2 px-4 rounded-xl bg-[#F1F1F1] flex flex-row justify-start items-center gap-6">
+            <div className="w-full flex flex-col mt-7 md:mt-14 mb-12 md:mb-24 px-5 gap-6">
+                <div className="w-full py-2 px-2 md:px-4 rounded-xl font-medium text-sm md:text-base bg-[#F1F1F1] flex flex-row justify-between md:justify-start items-center md:gap-6">
                     <span
-                        className={clsx(
-                            "py-1 px-4 rounded-lg font-medium text-base",
-                            {
-                                "text-white bg-[#1B4B66]": true,
-                                "text-[#626262]": false,
-                            }
-                        )}
+                        className={clsx("py-1 px-4 rounded-lg", {
+                            "text-white bg-[#1B4B66]": true,
+                            "text-[#626262]": false,
+                        })}
                     >
                         Product description
                     </span>
                     <span
-                        className={clsx(
-                            "py-1 px-4 rounded-lg font-medium text-base",
-                            {
-                                "text-white bg-[#1B4B66]": false,
-                                "text-[#626262]": true,
-                            }
-                        )}
+                        className={clsx("py-1 px-4 rounded-lg", {
+                            "text-white bg-[#1B4B66]": false,
+                            "text-[#626262]": true,
+                        })}
                     >
                         Related Products
                     </span>
                     <span
-                        className={clsx(
-                            "py-1 px-4 rounded-lg font-medium text-base",
-                            {
-                                "text-white bg-[#1B4B66]": false,
-                                "text-[#626262]": true,
-                            }
-                        )}
+                        className={clsx("py-1 px-4 rounded-lg", {
+                            "text-white bg-[#1B4B66]": false,
+                            "text-[#626262]": true,
+                        })}
                     >
                         Ratings and Reviews
                     </span>
                 </div>
-                <p className="w-full text-[#626262] font-medium text-base">
-                    {product.description}
-                </p>
+                <p className="w-full text-[#626262] font-medium text-sm md:text-base">{product.description}</p>
             </div>
         </div>
     );

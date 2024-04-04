@@ -18,13 +18,17 @@ function BreadCrumbs({ breadCrumbs }: Props) {
                             index < breadCrumbs.length - 1
                                 ? "text-[#1B4B66]"
                                 : "text-[#626262]",
-                            "text-base font-medium"
+                            "text-sm md:text-base font-medium"
                         )}
                     >
                         <Link href={item.href}>{item.name}</Link>
                     </li>
                     {breadCrumbs.length - 1 > index ? (
-                        <ChevronRightIcon width={24} height={24} />
+                        <ChevronRightIcon
+                            width={24}
+                            height={24}
+                            className="w-3 md:w-6 h-3 md:h-6"
+                        />
                     ) : (
                         ""
                     )}
