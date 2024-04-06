@@ -32,3 +32,12 @@ export type Product = {
     };
     tags: string[];
 };
+
+export type Review = {
+    productId: string;
+    userId: string;
+    username: string;
+    rating: number;
+    review: string;
+    date: Date;
+};
