@@ -73,7 +73,12 @@ export const products = [
         category: "Footwear",
         color: ["Black", "White", "Blue"],
         size: ["US 9", "US 10", "US 11"],
-        images: ["/products/card1.png", "/products/card1.png"],
+        images: [
+            "/products/card1.png",
+            "/products/card2.png",
+            "/products/card3.png",
+            "/products/card4.png",
+        ],
         thumbnail: "/products/card1.png",
         stockAvailability: "In Stock",
         discount: "10% Off",
@@ -290,5 +295,122 @@ export const products = [
             height: 1,
         },
         tags: ["smartphone-case", "accessories"],
+    },
+];
+
+export const reviews = [
+    // Reviews for product 1
+    {
+        productId: "1",
+        userId: "user1",
+        username: "JohnDoe",
+        rating: 5,
+        review: "These shoes are amazing! They are so comfortable and lightweight. Perfect for running or everyday wear.",
+        date: new Date("2023-03-15"),
+    },
+    {
+        productId: "1",
+        userId: "user2",
+        username: "JaneSmith",
+        rating: 4,
+        review: "Great shoes, but they run a bit small. I would recommend ordering a size up for a perfect fit.",
+        date: new Date("2023-03-20"),
+    },
+    // Reviews for product 2
+    {
+        productId: "2",
+        userId: "user3",
+        username: "AliceJohnson",
+        rating: 5,
+        review: "Love these yoga pants! They are super comfortable and stretchy. Great for yoga practice.",
+        date: new Date("2023-04-02"),
+    },
+    {
+        productId: "2",
+        userId: "user4",
+        username: "BobWilliams",
+        rating: 5,
+        review: "These pants are amazing quality and fit perfectly! I wear them everywhere.",
+        date: new Date("2023-04-05"),
+    },
+    // Reviews for product 3
+    {
+        productId: "3",
+        userId: "user5",
+        username: "EmilyBrown",
+        rating: 4,
+        review: "Nice shirt, good quality material. The fit is a bit loose for my liking, but overall, I'm satisfied with the purchase.",
+        date: new Date("2023-04-10"),
+    },
+    {
+        productId: "3",
+        userId: "user6",
+        username: "DavidMiller",
+        rating: 5,
+        review: "I love this shirt! It's so comfortable and versatile. Definitely recommend it.",
+        date: new Date("2023-04-15"),
+    },
+    // Reviews for product 4
+    {
+        productId: "4",
+        userId: "user7",
+        username: "OliviaGarcia",
+        rating: 4,
+        review: "Great shorts for running! They are lightweight and breathable. Only downside is the lack of pockets.",
+        date: new Date("2023-04-20"),
+    },
+    // Reviews for product 5
+    {
+        productId: "5",
+        userId: "user8",
+        username: "JamesWilson",
+        rating: 5,
+        review: "This hoodie is perfect for cooler weather. It's warm, comfortable, and fits great. Highly recommend!",
+        date: new Date("2023-04-25"),
+    },
+    // Reviews for product 6
+    {
+        productId: "6",
+        userId: "user9",
+        username: "SophiaLee",
+        rating: 5,
+        review: "These earbuds are fantastic! The sound quality is excellent, and they connect easily to my devices.",
+        date: new Date("2023-05-01"),
+    },
+    // Reviews for product 7
+    {
+        productId: "7",
+        userId: "user10",
+        username: "MichaelMartinez",
+        rating: 4,
+        review: "Good power bank for the price. It charges my phone quickly and is compact enough to carry around.",
+        date: new Date("2023-05-05"),
+    },
+    // Reviews for product 8
+    {
+        productId: "8",
+        userId: "user11",
+        username: "EmmaAnderson",
+        rating: 4,
+        review: "Nice wallet, good quality leather. It's a bit bulky with all my cards, but overall, I'm satisfied.",
+        date: new Date("2023-05-10"),
+    },
+    // Reviews for product 9
+    {
+        productId: "9",
+        userId: "user12",
+        username: "WilliamTaylor",
+        rating: 5,
+        review: "This backpack is perfect for traveling! It has plenty of room for all my essentials and is very comfortable to wear.",
+        date: new Date("2023-05-15"),
+    },
+    // Reviews for product 10
+    {
+        productId: "10",
+        userId: "user13",
+        username: "IsabellaThomas",
+        rating: 4,
+        review: "Good quality case, provides decent protection for my phone. The clear version looks nice and shows off the phone's design.",
+        date: new Date("2023-05-20"),
     },
 ];
