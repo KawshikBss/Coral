@@ -1,8 +1,8 @@
 import { products } from "@/app/lib/placeholder-data";
 import BreadCrumbs from "@/app/ui/shop/bread-crumbs";
+import Slides from "@/app/ui/shop/slides";
+import TabPanel from "@/app/ui/shop/tab-panel";
 import {
-    ChevronLeftIcon,
-    ChevronRightIcon,
     HeartIcon,
     MinusIcon,
     PlusIcon,
@@ -34,29 +34,7 @@ function SingleProduct({ params }: Props) {
                 ]}
             />
             <div className="w-full px-5 pt-4 pb-14 flex flex-col md:flex-row justify-between items-start gap-6">
-                <div className="w-full flex flex-col justify-between items-center">
-                    <Image
-                        src={product.thumbnail}
-                        alt={product.name}
-                        width={605}
-                        height={605}
-                        className="object-cover object-center rounded-2xl"
-                    />
-                    <div className="w-full mx-16 mt-6 flex justify-center items-center gap-8">
-                        <ChevronLeftIcon width={24} height={24} />
-                        {product.images.map((item, index) => (
-                            <Image
-                                src={item}
-                                alt={item}
-                                key={index}
-                                width={75}
-                                height={75}
-                                className="object-cover object-center rounded-xl"
-                            />
-                        ))}
-                        <ChevronRightIcon width={24} height={24} />
-                    </div>
-                </div>
+                <Slides product={product} />
                 <div className="w-full md:w-1/2 flex flex-col justify-start items-start">
                     <h1 className="text-[#13101E] font-semibold text-4xl">
                         {product.name}
@@ -211,35 +189,7 @@ function SingleProduct({ params }: Props) {
                     </div>
                 </div>
             </div>
-            <div className="w-full flex flex-col mt-7 md:mt-14 mb-12 md:mb-24 px-5 gap-6">
-                <div className="w-full py-2 px-2 md:px-4 rounded-xl font-medium text-sm md:text-base bg-[#F1F1F1] flex flex-row justify-between md:justify-start items-center md:gap-6">
-                    <span
-                        className={clsx("py-1 px-4 rounded-lg", {
-                            "text-white bg-[#1B4B66]": true,
-                            "text-[#626262]": false,
-                        })}
-                    >
-                        Product description
-                    </span>
-                    <span
-                        className={clsx("py-1 px-4 rounded-lg", {
-                            "text-white bg-[#1B4B66]": false,
-                            "text-[#626262]": true,
-                        })}
-                    >
-                        Related Products
-                    </span>
-                    <span
-                        className={clsx("py-1 px-4 rounded-lg", {
-                            "text-white bg-[#1B4B66]": false,
-                            "text-[#626262]": true,
-                        })}
-                    >
-                        Ratings and Reviews
-                    </span>
-                </div>
-                <p className="w-full text-[#626262] font-medium text-sm md:text-base">{product.description}</p>
-            </div>
+            <TabPanel product={product} />
         </div>
     );
 }
