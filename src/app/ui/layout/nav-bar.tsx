@@ -71,7 +71,9 @@ function Navbar({}: Props) {
                     />
                     <HeartIcon className="w-6 text-[#1B4B66]" />
                     <UserIcon className="w-6 text-[#1B4B66]" />
-                    <ShoppingBagIcon className="w-6 text-[#1B4B66]" />
+                    <Link href={"/my-cart"}>
+                        <ShoppingBagIcon className="w-6 text-[#1B4B66]" />
+                    </Link>
                 </div>
             </div>
             <Suspense fallback={<>Loading...</>}>
