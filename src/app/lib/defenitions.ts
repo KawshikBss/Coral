@@ -41,3 +41,10 @@ export type Review = {
     review: string;
     date: Date;
 };
+
+export type PaymentMethod = {
+    id: string;
+    name: string;
+    description: string;
+    iconUrl: string;
+};
