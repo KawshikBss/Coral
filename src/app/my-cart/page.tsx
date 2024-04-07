@@ -4,6 +4,7 @@ import { products } from "../lib/placeholder-data";
 import Image from "next/image";
 import clsx from "clsx";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 type Props = {};
 
@@ -112,12 +113,18 @@ function MyCart({}: Props) {
                     </table>
 
                     <div className="w-full flex flex-row justify-between items-center gap-5 mt-5">
-                        <span className="cursor-pointer w-full text-center py-2 rounded-lg bg-[#1B4B66] text-white font-semibold text-sm">
-                            Place Order
-                        </span>
-                        <span className="cursor-pointer w-full text-center py-2 rounded-lg bg-white text-[#1B4B66] border-[#1B4B66] border-2 font-semibold text-sm">
-                            Continue Shopping
-                        </span>
+                        <Link
+                            href={"/checkout"}
+                            className="cursor-pointer w-full text-center py-2 rounded-lg bg-[#1B4B66] text-white font-semibold text-sm"
+                        >
+                            <span>Place Order</span>
+                        </Link>
+                        <Link
+                            href={"/shop"}
+                            className="cursor-pointer w-full text-center py-2 rounded-lg bg-white text-[#1B4B66] border-[#1B4B66] border-2 font-semibold text-sm"
+                        >
+                            <span>Continue Shopping</span>
+                        </Link>
                     </div>
                 </div>
             </div>
