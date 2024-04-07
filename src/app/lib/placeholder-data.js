@@ -414,3 +414,62 @@ export const reviews = [
         date: new Date("2023-05-20"),
     },
 ];
+
+export const paymentMethods = [
+    {
+        id: "cash_on_delivery",
+        name: "Cash on Delivery",
+        description: "Pay with cash upon delivery of your order.",
+        iconUrl: "/payment-2.png",
+    },
+    {
+        id: "credit_debit_card",
+        name: "Credit/Debit Card",
+        description:
+            "Pay securely with your Visa, Mastercard, or American Express card.",
+        iconUrl: "/payment-2.png",
+    },
+    {
+        id: "mobile_financial_services",
+        name: "Mobile Financial Services",
+        description:
+            "Pay conveniently using mobile financial services like bKash, Nagad, or Rocket.",
+        iconUrl: "/payment-2.png",
+    },
+    {
+        id: "bank_transfer",
+        name: "Bank Transfer",
+        description: "Transfer payment directly from your bank account.",
+        iconUrl: "/payment-2.png",
+    },
+    {
+        id: "google_pay",
+        name: "Google Pay",
+        description: "Securely pay with Google Pay.",
+        iconUrl: "/payment-2.png",
+    },
+    {
+        id: "apple_pay",
+        name: "Apple Pay",
+        description: "Securely pay with Apple Pay.",
+        iconUrl: "/payment-2.png",
+    },
+    {
+        id: "amazon_pay",
+        name: "Amazon Pay",
+        description: "Securely pay with Amazon Pay.",
+        iconUrl: "/payment-2.png",
+    },
+    {
+        id: "payoneer",
+        name: "Payoneer",
+        description: "Securely pay with Payoneer.",
+        iconUrl: "/payment-2.png",
+    },
+    {
+        id: "paypal",
+        name: "PayPal",
+        description: "Securely pay with PayPal.",
+        iconUrl: "/payment-2.png",
+    },
+];
