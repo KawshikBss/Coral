@@ -430,8 +430,22 @@ export const paymentMethods = [
         iconUrl: "/payment-2.png",
     },
     {
-        id: "mobile_financial_services",
-        name: "Mobile Financial Services",
+        id: "bkash",
+        name: "Bkash",
+        description:
+            "Pay conveniently using mobile financial services like bKash, Nagad, or Rocket.",
+        iconUrl: "/payment-2.png",
+    },
+    {
+        id: "Nagad",
+        name: "Nagad",
+        description:
+            "Pay conveniently using mobile financial services like bKash, Nagad, or Rocket.",
+        iconUrl: "/payment-2.png",
+    },
+    {
+        id: "Rocket",
+        name: "Rocket",
         description:
             "Pay conveniently using mobile financial services like bKash, Nagad, or Rocket.",
         iconUrl: "/payment-2.png",
