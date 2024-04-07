@@ -41,13 +41,15 @@ function Navbar({}: Props) {
     return (
         <div className="w-full bg-[#FFF] flex felx-row justify-between items-center py-4 px-5">
             <div className="flex felx-row justify-between items-center gap-5">
-                <Image
-                    src={"/logo.png"}
-                    alt="CORA'L"
-                    width={108}
-                    height={22}
-                    className=""
-                />
+                <Link href={"/"}>
+                    <Image
+                        src={"/logo.png"}
+                        alt="CORA'L"
+                        width={108}
+                        height={22}
+                        className=""
+                    />
+                </Link>
                 <ul className="hidden md:flex flex-row gap-5">
                     {navLinks.map((item, index) => (
                         <li className="text-[#171520]" key={index}>
@@ -70,7 +72,9 @@ function Navbar({}: Props) {
                         onClick={toggleSearch}
                     />
                     <HeartIcon className="w-6 text-[#1B4B66]" />
-                    <UserIcon className="w-6 text-[#1B4B66]" />
+                    <Link href={"/profile"}>
+                        <UserIcon className="w-6 text-[#1B4B66]" />
+                    </Link>
                     <Link href={"/my-cart"}>
                         <ShoppingBagIcon className="w-6 text-[#1B4B66]" />
                     </Link>
