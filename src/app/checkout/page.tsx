@@ -37,18 +37,21 @@ function Checkout({}: Props) {
                             {paymentMethods.map((item, index) => (
                                 <div
                                     key={index}
-                                    className="flex flex-col justify-center items-center gap-2 rounded-xl bg-[#E3E3E3] border h-40 px-4 pt-12 pb-6"
+                                    className="w-40 h-36 flex-shrink-0"
                                 >
-                                    <Image
-                                        src={item.iconUrl}
-                                        alt="icon"
-                                        width={140}
-                                        height={42}
-                                        className="w-32 h-10 object-contain"
-                                    />
-                                    <span className="text-[#171520] font-medium text-base w-max">
-                                        {item.name}
-                                    </span>
+                                    <div className="flex flex-col items-center gap-2 rounded-xl bg-[#E3E3E3] border w-full h-full px-4 pt-12 pb-6">
+                                        <Image
+                                            src={item.iconUrl}
+                                            alt="icon"
+                                            width={32}
+                                            height={10}
+                                            className="object-contain"
+                                            layout="fixed"
+                                        />
+                                        <span className="text-[#171520] font-medium text-base w-max">
+                                            {item.name}
+                                        </span>
+                                    </div>
                                 </div>
                             ))}
                         </div>
