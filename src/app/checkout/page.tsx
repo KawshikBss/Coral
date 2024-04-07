@@ -20,10 +20,10 @@ function Checkout({}: Props) {
                     },
                 ]}
             />
-            <h1 className="text-[#1B4B66] font-semibold text-2xl md:text-4xl mx-4 md:mx-5 mt-3 md:mt-6 mb-5 md:mb-10">
+            <h1 className="text-[#1B4B66] font-semibold text-2xl md:text-4xl mx-4 md:mx-5 mt-3 md:mt-6 mb-4 md:mb-10">
                 Checkout
             </h1>
-            <div className="w-full px-5 mb-36 flex flex-col-reverse md:flex-row justify-between items-start">
+            <div className="w-full px-4 md:px-5 mb-36 flex flex-col-reverse md:flex-row justify-between items-start">
                 <div className="w-full md:w-3/5 flex flex-col gap-10">
                     <CheckoutForm />
                     <div className="w-full flex flex-col">
