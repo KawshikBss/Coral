@@ -23,8 +23,8 @@ function Checkout({}: Props) {
             <h1 className="text-[#1B4B66] font-semibold text-2xl md:text-4xl mx-4 md:mx-5 mt-3 md:mt-6 mb-5 md:mb-10">
                 Checkout
             </h1>
-            <div className="w-full px-5 mb-36 flex flex-row justify-between items-start">
-                <div className="w-3/5 flex flex-col gap-10">
+            <div className="w-full px-5 mb-36 flex flex-col-reverse md:flex-row justify-between items-start">
+                <div className="w-full md:w-3/5 flex flex-col gap-10">
                     <CheckoutForm />
                     <div className="w-full flex flex-col">
                         <span className="w-full flex flex-row justify-between items-center pb-2 border-b-2 mb-10">
@@ -67,7 +67,7 @@ function Checkout({}: Props) {
                         </Link>
                     </div>
                 </div>
-                <div className=" w-1/3 flex flex-col gap-6">
+                <div className="w-full md:w-1/3 flex flex-col gap-6 mb-4 md:mb-0">
                     <div className="w-full">
                         <h3 className="text-[#13101E] font-semibold text-base md:text-xl border-b-2 pb-2 mb-4 md:mb-8">
                             Order Summary
@@ -85,7 +85,7 @@ function Checkout({}: Props) {
                                         height={80}
                                         className=" rounded-lg"
                                     />
-                                    <div className="flex flex-col items-start gap-2 text-base text-[#626262]">
+                                    <div className="flex flex-col items-start gap-2 text-sm md:text-base text-[#626262]">
                                         <span className="text-[#171520] font-medium">
                                             {item.name}
                                         </span>
