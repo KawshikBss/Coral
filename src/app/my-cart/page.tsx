@@ -26,7 +26,7 @@ function MyCart({}: Props) {
             <div className="mx-3 md:mx-5 flex flex-col md:flex-row items-start justify-between">
                 <table className="w-full md:w-3/6 min-w-max table-auto text-left">
                     <thead className="pb-2 border-b-2">
-                        <tr className="text-[#626262] font-medium text-xs mdtext-base">
+                        <tr className="text-[#626262] font-medium text-xs md:text-base">
                             <th className="text-start">Product Name</th>
                             <th className="text-end">Price</th>
                             <th className="text-end">Qty</th>
