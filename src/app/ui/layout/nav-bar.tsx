@@ -74,7 +74,7 @@ function Navbar({}: Props) {
                     <Link href={"/profile/my-wishlist"}>
                         <HeartIcon className="w-6 text-[#1B4B66]" />
                     </Link>
-                    <Link href={"/profile"}>
+                    <Link href={"/profile/personal-information"}>
                         <UserIcon className="w-6 text-[#1B4B66]" />
                     </Link>
                     <Link href={"/my-cart"}>
