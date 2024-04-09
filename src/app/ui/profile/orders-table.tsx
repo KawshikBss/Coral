@@ -1,5 +1,6 @@
 import { ordersData } from "@/app/lib/placeholder-data";
 import { ChevronRightIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 import React from "react";
 
 type Props = {};
@@ -33,11 +34,13 @@ function OrdersTable({}: Props) {
                             {item.status.toUpperCase()}
                         </td>
                         <td className="w-6 h-6">
-                            <ChevronRightIcon
-                                width={24}
-                                height={24}
-                                className=" w-6 h-6"
-                            />
+                            <Link href={`/profile/my-orders/${item.orderId}`}>
+                                <ChevronRightIcon
+                                    width={24}
+                                    height={24}
+                                    className=" w-6 h-6"
+                                />
+                            </Link>
                         </td>
                     </tr>
                 ))}
