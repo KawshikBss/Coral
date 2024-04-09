@@ -71,7 +71,9 @@ function Navbar({}: Props) {
                         className="md:hidden w-6 text-[#1B4B66]"
                         onClick={toggleSearch}
                     />
-                    <HeartIcon className="w-6 text-[#1B4B66]" />
+                    <Link href={"/profile/my-wishlist"}>
+                        <HeartIcon className="w-6 text-[#1B4B66]" />
+                    </Link>
                     <Link href={"/profile"}>
                         <UserIcon className="w-6 text-[#1B4B66]" />
                     </Link>
