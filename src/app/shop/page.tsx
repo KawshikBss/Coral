@@ -3,9 +3,11 @@ import React from "react";
 import BreadCrumbs from "../ui/shop/bread-crumbs";
 import ProductCatalog from "../ui/shop/product-catalog";
 
-type Props = {};
+type Props = {
+    searchParams: { [key: string]: string | string[] | undefined };
+};
 
-function Shop({}: Props) {
+function Shop({ searchParams }: Props) {
     return (
         <main className="w-full h-full">
             <Image
@@ -18,11 +20,22 @@ function Shop({}: Props) {
             <BreadCrumbs
                 breadCrumbs={[
                     { name: "Home", href: "/" },
-                    { name: "Handbag", href: "/shop" },
+                    {
+                        name: searchParams?.category
+                            ? searchParams?.category.toString().toUpperCase()
+                            : "All",
+                        href: `/shop?category=${
+                            searchParams?.category
+                                ? searchParams?.category.toString()
+                                : "all"
+                        }`,
+                    },
                 ]}
             />
             <h1 className="text-[#1B4B66] text-2xl md:text-4xl font-semibold pt-4 md:pt-6 pb-4 md:pb-11 px-4">
-                Handbags
+                {searchParams?.category
+                    ? searchParams?.category.toString().toUpperCase()
+                    : "All"}
             </h1>
             <ProductCatalog />
         </main>
