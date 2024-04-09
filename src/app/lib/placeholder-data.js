@@ -487,3 +487,70 @@ export const paymentMethods = [
         iconUrl: "/payment-2.png",
     },
 ];
+
+export const ordersData = [
+    {
+        orderId: "order1",
+        userId: "user1",
+        products: [
+            {
+                productId: "1",
+                quantity: 2,
+            },
+            {
+                productId: "3",
+                quantity: 1,
+            },
+        ],
+        totalPrice: 249.97,
+        paymentMethod: "cash_on_delivery",
+        shippingAddress: {
+            street: "123 Main Street",
+            city: "Dhaka",
+            postalCode: "1205",
+            country: "Bangladesh",
+        },
+        orderDate: new Date("2023-05-01"),
+        status: "completed",
+    },
+    {
+        orderId: "order2",
+        userId: "user2",
+        products: [
+            {
+                productId: "2",
+                quantity: 1,
+            },
+        ],
+        totalPrice: 49.99,
+        paymentMethod: "credit_debit_card",
+        shippingAddress: {
+            street: "456 Elm Avenue",
+            city: "Chittagong",
+            postalCode: "4000",
+            country: "Bangladesh",
+        },
+        orderDate: new Date("2023-05-05"),
+        status: "pending",
+    },
+    {
+        orderId: "order3",
+        userId: "user3",
+        products: [
+            {
+                productId: "5",
+                quantity: 1,
+            },
+        ],
+        totalPrice: 79.99,
+        paymentMethod: "mobile_financial_services",
+        shippingAddress: {
+            street: "789 Oak Boulevard",
+            city: "Sylhet",
+            postalCode: "3100",
+            country: "Bangladesh",
+        },
+        orderDate: new Date("2023-05-10"),
+        status: "cancelled",
+    },
+];
