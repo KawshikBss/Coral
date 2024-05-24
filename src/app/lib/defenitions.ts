@@ -4,8 +4,8 @@ export type BreadCrumb = {
 };
 
 export type CategoryItem = {
+    id: string;
     name: string;
-    slug: string;
 };
 
 export type Product = {
@@ -13,8 +13,10 @@ export type Product = {
     name: string;
     description: string;
     price: number;
+    discount_price: number;
     brand: string;
-    category: string;
+    category_id: string;
+    category_name: string;
     color: string[];
     size: string[];
     images: string[];
@@ -25,11 +27,7 @@ export type Product = {
     slug: string;
     sku: string;
     weight?: number;
-    dimensions?: {
-        length: number;
-        width: number;
-        height: number;
-    };
+    createDate?: Date;
     tags: string[];
 };
 
@@ -47,4 +45,17 @@ export type PaymentMethod = {
     name: string;
     description: string;
     iconUrl: string;
+};
+
+export type Brand = {
+    id: string;
+    name: string;
+    thumbnail: string;
+    slug: string;
+};
+
+export type Color = {
+    id: string;
+    name: string;
+    code: string;
 };
