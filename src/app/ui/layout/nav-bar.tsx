@@ -9,33 +9,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { Suspense, useState } from "react";
 import SearchModal from "../home/search-modal";
+import { CategoryItem } from "@/app/lib/defenitions";
 
-type Props = {};
+type Props = { categoryList: CategoryItem[] };
 
-const navLinks = [
-    {
-        name: "Handbags",
-        href: "/shop?category=handbags",
-    },
-    {
-        name: "Watches",
-        href: "/shop?category=watches",
-    },
-    {
-        name: "Skincare",
-        href: "/shop?category=skincare",
-    },
-    {
-        name: "Jewellery",
-        href: "/shop?category=jewellery",
-    },
-    {
-        name: "Apparels",
-        href: "/shop?category=apparels",
-    },
-];
-
-function Navbar({}: Props) {
+function Navbar({ categoryList }: Props) {
     const [showSearch, setShowSearch] = useState(false);
     const toggleSearch = () => setShowSearch((prev) => !prev);
     return (
@@ -51,9 +29,11 @@ function Navbar({}: Props) {
                     />
                 </Link>
                 <ul className="hidden md:flex flex-row gap-5">
-                    {navLinks.map((item, index) => (
+                    {categoryList.map((item, index) => (
                         <li className="text-[#171520]" key={index}>
-                            <Link href={item.href}>{item.name}</Link>
+                            <Link href={`/shop?category=${item.id}`}>
+                                {item.name}
+                            </Link>
                         </li>
                     ))}
                 </ul>
