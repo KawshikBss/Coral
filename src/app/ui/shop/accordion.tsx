@@ -2,6 +2,7 @@
 import { CategoryItem } from "@/app/lib/defenitions";
 import { PlusIcon } from "@heroicons/react/24/outline";
 import clsx from "clsx";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 
 type Props = {
@@ -13,6 +14,22 @@ type Props = {
 function Accordion({ name, items }: Props) {
     const [open, setOpen] = useState(false);
     const toggle = () => setOpen((prev) => !prev);
+    const pathname = usePathname();
+    const { replace } = useRouter();
+    const searchParams = useSearchParams();
+    const currentParams = searchParams.get(name);
+    var paramsList = currentParams ? currentParams.split(",") : [];
+    const handleFilterItems = (itemName: string) => {
+        const params = new URLSearchParams(searchParams);
+        if (paramsList?.includes(itemName)) {
+            paramsList = paramsList.filter((item) => item !== itemName);
+        } else {
+            paramsList?.push(itemName);
+        }
+        const newParam = paramsList.join(",");
+        params.set(name, newParam);
+        replace(`${pathname}?${params.toString()}`);
+    };
 
     return (
         <div
@@ -22,7 +39,9 @@ function Accordion({ name, items }: Props) {
             )}
         >
             <span className="w-full flex flex-row justify-between items-center border-b-2 pb-3">
-                <span className="text-[#13101E] text-base]">{name}</span>
+                <span className="text-[#13101E] text-base capitalize">
+                    {name}
+                </span>
                 <PlusIcon
                     width={34}
                     className={clsx(
@@ -48,10 +67,15 @@ function Accordion({ name, items }: Props) {
                             key={index}
                             className={clsx(
                                 { "gap-2": open },
-                                "w-full flex flex-row justify-start items-center text-[#626262] text-base"
+                                "w-full flex flex-row justify-start items-center text-[#626262] text-base capitalize cursor-pointer"
                             )}
+                            onClick={() => handleFilterItems(item.id)}
                         >
-                            <input type="checkbox" />
+                            <input
+                                type="checkbox"
+                                checked={currentParams?.includes(item.id)}
+                                readOnly
+                            />
                             <span>{item.name}</span>
                         </li>
                     ))}
