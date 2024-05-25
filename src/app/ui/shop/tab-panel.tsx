@@ -2,16 +2,17 @@
 import { Product } from "@/app/lib/defenitions";
 import { StarIcon as StarIconOutline } from "@heroicons/react/24/outline";
 import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
-import { products, reviews } from "@/app/lib/placeholder-data";
+import { reviews } from "@/app/lib/placeholder-data";
 import clsx from "clsx";
 import React, { useState } from "react";
 import Card from "./product-card";
 
 type Props = {
     product: Product;
+    relatedProducts: Product[] | [];
 };
 
-function TabPanel({ product }: Props) {
+function TabPanel({ product, relatedProducts }: Props) {
     const [activeTab, setActiveTab] = useState(0);
     return (
         <div className="w-full flex flex-col mt-7 md:mt-14 mb-12 md:mb-24 px-5">
@@ -74,7 +75,7 @@ function TabPanel({ product }: Props) {
                 )}
             >
                 <div className="w-full flex flex-wrap justify-center items-start gap-8 gap-y-8 md:gap-y-16">
-                    {products.map((item, index) => (
+                    {relatedProducts.map((item, index) => (
                         <Card product={item} key={index} />
                     ))}
                 </div>
