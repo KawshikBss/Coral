@@ -2,12 +2,21 @@ import Image from "next/image";
 import React from "react";
 import BreadCrumbs from "../ui/shop/bread-crumbs";
 import ProductCatalog from "../ui/shop/product-catalog";
+import { fetchBrandList, fetchCategory, fetchColorList } from "../lib/data";
+import { fetchFilteredProducts } from "../lib/data/products";
 
 type Props = {
-    searchParams: { [key: string]: string | string[] | undefined };
+    searchParams: { [key: string]: string | undefined };
 };
 
-function Shop({ searchParams }: Props) {
+async function Shop({ searchParams }: Props) {
+    const catergory = await fetchCategory(
+        searchParams?.category ? searchParams?.category : null
+    );
+
+    const products = await fetchFilteredProducts(searchParams);
+    const brandList = await fetchBrandList();
+    const colorList = await fetchColorList();
     return (
         <main className="w-full h-full">
             <Image
@@ -21,23 +30,24 @@ function Shop({ searchParams }: Props) {
                 breadCrumbs={[
                     { name: "Home", href: "/" },
                     {
-                        name: searchParams?.category
-                            ? searchParams?.category.toString().toUpperCase()
+                        name: catergory?.name
+                            ? catergory?.name.toString().toUpperCase()
                             : "All",
                         href: `/shop?category=${
-                            searchParams?.category
-                                ? searchParams?.category.toString()
-                                : "all"
+                            catergory?.name ? catergory?.name.toString() : "all"
                         }`,
                     },
                 ]}
             />
             <h1 className="text-[#1B4B66] text-2xl md:text-4xl font-semibold pt-4 md:pt-6 pb-4 md:pb-11 px-4">
-                {searchParams?.category
-                    ? searchParams?.category.toString().toUpperCase()
+                {catergory?.name
+                    ? catergory?.name.toString().toUpperCase()
                     : "All"}
             </h1>
-            <ProductCatalog />
+            <ProductCatalog
+                productsList={products}
+                filterLists={{ brandList, colorList }}
+            />
         </main>
     );
 }
