@@ -27,7 +27,11 @@ function Accordion({ name, items }: Props) {
             paramsList?.push(itemName);
         }
         const newParam = paramsList.join(",");
-        params.set(name, newParam);
+        if (newParam.length) {
+            params.set(name, newParam);
+        } else if (params.has(name)) {
+            params.delete(name);
+        }
         replace(`${pathname}?${params.toString()}`);
     };
 
@@ -73,7 +77,11 @@ function Accordion({ name, items }: Props) {
                         >
                             <input
                                 type="checkbox"
-                                checked={currentParams?.includes(item.id)}
+                                checked={
+                                    currentParams?.includes(item.id)
+                                        ? true
+                                        : false
+                                }
                                 readOnly
                             />
                             <span>{item.name}</span>
