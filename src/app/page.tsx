@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import Carousel from "./ui/home/carousel";
-import clsx from "clsx";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
-import { products } from "./lib/placeholder-data";
+import { fetchLatestProducts } from "./lib/data/products";
 
-export default function Home() {
+export default async function Home() {
+    const newArrivals = await fetchLatestProducts();
+
     return (
         <main className="w-full h-full">
             <div className="w-[90%] h-[514px] bg-[url('/home-banner.png')] bg-no-repeat bg-cover rounded-xl mt-6 mb-16 mx-auto relative">
@@ -24,7 +25,11 @@ export default function Home() {
                     </Link>
                 </div>
             </div>
-            <Carousel heading="New Arrivals" allLink="/shop" items={products} />
+            <Carousel
+                heading="New Arrivals"
+                allLink="/shop"
+                items={newArrivals}
+            />
             <div className="flex flex-col justify-between items-start gap-6 px-5 pt-8 pb-16 mt-8 mb-16 bg-[#1B4B66]">
                 <h1 className="text-white font-semibold text-3xl">
                     Handpicked Collections
