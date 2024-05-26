@@ -6,6 +6,7 @@ import { FunnelIcon } from "@heroicons/react/24/outline";
 import FilterModal from "./filter-modal";
 import { Brand, Color, Product } from "@/app/lib/defenitions";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import Pagination from "../components/pagination";
 
 type Props = {
     productsList: Product[] | [];
@@ -18,6 +19,7 @@ function ProductCatalog({ productsList, filterLists }: Props) {
     const pathname = usePathname();
     const searchParams = useSearchParams();
     const { replace } = useRouter();
+    const limit = searchParams.get("limit") ?? 20;
     const handleProductLimitChange = (
         event: ChangeEvent<HTMLSelectElement>
     ) => {
@@ -41,7 +43,7 @@ function ProductCatalog({ productsList, filterLists }: Props) {
             <div className="w-full md:w-4/5 flex flex-col justify-between p-4 md:px-8">
                 <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-2 md:gap-0 pb-6">
                     <span className="w-full md:w-fit flex flex-row justify-between items-center">
-                        Showing 1 - 20 of 145 items
+                        Showing 1 - {limit} of {productsList.length} items
                         <FunnelIcon
                             width={24}
                             height={24}
@@ -79,6 +81,7 @@ function ProductCatalog({ productsList, filterLists }: Props) {
                         <Card product={item} key={index} />
                     ))}
                 </div>
+                <Pagination totalItems={productsList.length} />
             </div>
         </div>
     );
