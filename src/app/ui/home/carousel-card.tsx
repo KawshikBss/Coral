@@ -30,7 +30,7 @@ function Card({ product }: Props) {
                 <HeartIcon width={18} height={16} />
             </span>
             <p className="text-[#626262] font-medium text-sm md:text-base">
-                {product.category}
+                {product.category_name}
             </p>
             <span className="text-[#171520] font-medium text-sm md:text-base">
                 ${product.price}
