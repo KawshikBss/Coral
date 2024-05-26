@@ -2,17 +2,15 @@ import Image from "next/image";
 import React from "react";
 import BreadCrumbs from "../ui/shop/bread-crumbs";
 import ProductCatalog from "../ui/shop/product-catalog";
-import { fetchBrandList, fetchCategory, fetchColorList } from "../lib/data";
 import { fetchFilteredProducts } from "../lib/data/products";
+import { fetchBrandList, fetchCategory, fetchColorList } from "../lib/data";
 
 type Props = {
     searchParams: { [key: string]: string | undefined };
 };
 
 async function Shop({ searchParams }: Props) {
-    const catergory = await fetchCategory(
-        searchParams?.category ? searchParams?.category : null
-    );
+    const catergory = await fetchCategory(searchParams?.category ?? null);
 
     const products = await fetchFilteredProducts(searchParams);
     const brandList = await fetchBrandList();
