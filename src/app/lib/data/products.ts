@@ -40,6 +40,87 @@ export async function fetchProducts() {
     }
 }
 
+export async function fetchSingleProduct(id: string) {
+    try {
+        const data = await sql`SELECT
+            p.id AS id,
+            p.name AS name,
+            p.description AS description,
+            p.price AS price,
+            p.discount_price AS discount_price,
+            b.name AS brand_name,
+            c.id AS category_id,
+            c.name AS category_name,
+            co.name AS color_name,
+            co.code AS color_code,
+            p.size AS size,
+            p.images AS images,
+            p.thumbnail AS thumbnail,
+            p.stock_availability AS stock_availability,
+            p.discount AS discount,
+            p.rating AS rating,
+            p.slug AS slug,
+            p.sku AS sku,
+            p.tags AS tags,
+            p.created_at AS created_at
+            FROM
+                products p
+            JOIN
+                product_colors pc ON p.id = pc.product_id
+            LEFT JOIN
+                brands b ON p.brand_id = b.id
+            LEFT JOIN
+                categories c ON p.category_id = c.id
+            LEFT JOIN
+                colors co ON pc.color_id = co.id
+            WHERE p.id = ${id};`;
+        return data.rows[0] as Product;
+    } catch (error) {
+        console.error(error);
+        return undefined;
+    }
+}
+
+export async function fetchLatestProducts() {
+    try {
+        const data = await sql<Product>`SELECT
+            p.id AS id,
+            p.name AS name,
+            p.description AS description,
+            p.price AS price,
+            p.discount_price AS discount_price,
+            b.name AS brand_name,
+            c.id AS category_id,
+            c.name AS category_name,
+            co.name AS color_name,
+            co.code AS color_code,
+            p.size AS size,
+            p.images AS images,
+            p.thumbnail AS thumbnail,
+            p.stock_availability AS stock_availability,
+            p.discount AS discount,
+            p.rating AS rating,
+            p.slug AS slug,
+            p.sku AS sku,
+            p.tags AS tags
+            FROM
+                products p
+            JOIN
+                product_colors pc ON p.id = pc.product_id
+            LEFT JOIN
+                brands b ON p.brand_id = b.id
+            LEFT JOIN
+                categories c ON p.category_id = c.id
+            LEFT JOIN
+                colors co ON pc.color_id = co.id
+            ORDER BY p.created_at DESC;`;
+        return data.rows;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
 export async function fetchProductsByCategory(category_id: string | null) {
     if (!category_id) return [];
     try {
@@ -307,14 +388,29 @@ export async function fetchProductsByAvailability(stock_availability: string) {
 export async function fetchFilteredProducts(searchParams: {
     [key: string]: string | undefined;
 }) {
-    const category = searchParams["category"] ?? null;
-    let brand = searchParams["brand"] ?? null;
-    let color = searchParams["color"] ?? null;
-    const priceRange = searchParams["price range"] ?? null;
-    const rating = searchParams["rating"] ?? null;
-    let availability = searchParams["availability"] ?? null;
-    const limit = searchParams["limit"] ?? null;
-    let sort_by = searchParams["sort_by"] ?? null;
+    const category = searchParams["category"]?.length
+        ? searchParams["category"]
+        : null;
+    let brand = searchParams["brand"]?.length ? searchParams["brand"] : null;
+    let color = searchParams["color"]?.length ? searchParams["color"] : null;
+    const priceRange = searchParams["price range"]?.length
+        ? searchParams["price range"]
+        : null;
+    const rating = searchParams["rating"]?.length
+        ? searchParams["rating"]
+        : null;
+    let availability = searchParams["availability"]?.length
+        ? searchParams["availability"]
+        : null;
+    const page = searchParams["page"]?.length
+        ? parseInt(searchParams["page"])
+        : 0;
+    const limit = searchParams["limit"]?.length
+        ? parseInt(searchParams["limit"])
+        : 0;
+    let sort_by = searchParams["sort_by"]?.length
+        ? searchParams["sort_by"]
+        : null;
     brand =
         brand
             ?.split(",")
@@ -381,13 +477,13 @@ export async function fetchFilteredProducts(searchParams: {
                 ORDER BY ${
                     sort_by ? `p.discount_price ${sort_by}` : "p.rating DESC"
                 }
-                ${limit ? `LIMIT ${limit}` : ""};
+                ${limit ? `LIMIT ${limit}` : ""}
+                ${page > 1 ? `OFFSET ${page * limit}` : ""};
                 `;
         const data = await sql.query(query);
-        console.log("Filtered products fetched successfully");
         return data.rows as Product[];
     } catch (error) {
-        console.error("Error fetching filtered products:", error);
+        console.error(error);
         return [];
     }
 }
