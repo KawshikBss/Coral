@@ -4,25 +4,26 @@ import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import React, { useState } from "react";
 
-type Props = { product: Product };
+type Props = { product: Product | undefined };
 
 function Slides({ product }: Props) {
     const [currentSlide, setCurrentSlide] = useState(0);
+    const imagesLength = product?.images?.length ?? 1;
     const handlePrevSlide = () => {
         setCurrentSlide((prev) => {
-            return prev - 1 >= 0 ? prev - 1 : product.images.length - 1;
+            return prev - 1 >= 0 ? prev - 1 : imagesLength - 1;
         });
     };
     const handleNextSlide = () => {
         setCurrentSlide((prev) => {
-            return prev + 1 < product.images.length ? prev + 1 : 0;
+            return prev + 1 < imagesLength ? prev + 1 : 0;
         });
     };
     return (
         <div className="w-full flex flex-col justify-between items-center">
             <Image
-                src={product.images[currentSlide]}
-                alt={product.name}
+                src={product?.images?.[currentSlide] ?? ""}
+                alt={product?.name ?? ""}
                 width={605}
                 height={605}
                 className="object-cover object-center rounded-2xl"
@@ -35,7 +36,7 @@ function Slides({ product }: Props) {
                 />
                 <div className="w-full">
                     <div className="flex justify-center items-center gap-8">
-                        {product.images.map((item, index) => (
+                        {product?.images?.map((item, index) => (
                             <Image
                                 src={item}
                                 alt={item}
