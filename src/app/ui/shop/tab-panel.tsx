@@ -8,7 +8,7 @@ import React, { useState } from "react";
 import Card from "./product-card";
 
 type Props = {
-    product: Product;
+    product: Product | undefined;
     relatedProducts: Product[] | [];
 };
 
@@ -63,7 +63,7 @@ function TabPanel({ product, relatedProducts }: Props) {
                     "grid overflow-hidden transition-all ease-in-out duration-500 text-[#626262] font-medium text-sm md:text-base"
                 )}
             >
-                {product.description}
+                {product?.description}
             </p>
             <div
                 className={clsx(
