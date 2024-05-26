@@ -1,4 +1,7 @@
-import { products } from "@/app/lib/placeholder-data";
+import {
+    fetchLatestProducts,
+    fetchSingleProduct,
+} from "@/app/lib/data/products";
 import BreadCrumbs from "@/app/ui/shop/bread-crumbs";
 import Slides from "@/app/ui/shop/slides";
 import TabPanel from "@/app/ui/shop/tab-panel";
@@ -10,16 +13,15 @@ import {
     StarIcon as StarIconOutline,
 } from "@heroicons/react/24/outline";
 import { StarIcon as StarIconSolid } from "@heroicons/react/24/solid";
-import clsx from "clsx";
-import Image from "next/image";
 import React from "react";
 
 type Props = {
     params: { id: string };
 };
 
-function SingleProduct({ params }: Props) {
-    const product = products[parseInt(params.id) - 1];
+async function SingleProduct({ params }: Props) {
+    const product = await fetchSingleProduct(params.id);
+    const relatedProducts = await fetchLatestProducts();
 
     return (
         <div className="w-full h-full">
@@ -27,24 +29,24 @@ function SingleProduct({ params }: Props) {
                 breadCrumbs={[
                     { name: "Home", href: "/" },
                     {
-                        name: product.category,
-                        href: `/shop?category=${product.category}`,
+                        name: product?.category_name ?? "",
+                        href: `/shop?category=${product?.category_id}`,
                     },
-                    { name: product.name, href: `/shop/${product.id}` },
+                    { name: product?.name ?? "", href: `/shop/${product?.id}` },
                 ]}
             />
             <div className="w-full px-5 pt-4 pb-14 flex flex-col md:flex-row justify-between items-start gap-6">
                 <Slides product={product} />
                 <div className="w-full md:w-1/2 flex flex-col justify-start items-start">
                     <h1 className="text-[#13101E] font-semibold text-4xl">
-                        {product.name}
+                        {product?.name}
                     </h1>
                     <h1 className="text-[#626262] font-semibold text-xl mb-9">
-                        {product.brand}
+                        {product?.brand}
                     </h1>
                     <span className="flex flex-row items-center gap-4 text-[#1B4B66] text-sm font-medium">
                         <span className="flex flex-row items-center gap-1 text-[#FF8C4B]">
-                            {product.rating && product.rating < 1 ? (
+                            {product?.rating && product?.rating < 1 ? (
                                 <StarIconOutline
                                     width={24}
                                     height={24}
@@ -57,7 +59,7 @@ function SingleProduct({ params }: Props) {
                                     className="w-6 h-6"
                                 />
                             )}
-                            {product.rating && product.rating < 2 ? (
+                            {product?.rating && product?.rating < 2 ? (
                                 <StarIconOutline
                                     width={24}
                                     height={24}
@@ -70,7 +72,7 @@ function SingleProduct({ params }: Props) {
                                     className="w-6 h-6"
                                 />
                             )}
-                            {product.rating && product.rating < 3 ? (
+                            {product?.rating && product?.rating < 3 ? (
                                 <StarIconOutline
                                     width={24}
                                     height={24}
@@ -83,7 +85,7 @@ function SingleProduct({ params }: Props) {
                                     className="w-6 h-6"
                                 />
                             )}
-                            {product.rating && product.rating < 4 ? (
+                            {product?.rating && product?.rating < 4 ? (
                                 <StarIconOutline
                                     width={24}
                                     height={24}
@@ -96,7 +98,7 @@ function SingleProduct({ params }: Props) {
                                     className="w-6 h-6"
                                 />
                             )}
-                            {product.rating && product.rating < 5 ? (
+                            {product?.rating && product?.rating < 5 ? (
                                 <StarIconOutline
                                     width={24}
                                     height={24}
@@ -115,17 +117,20 @@ function SingleProduct({ params }: Props) {
                         </p>
                     </span>
                     <span className="text-[#171520] font-bold text-2xl md:text-4xl my-6">
-                        ${product.price}{" "}
-                        {product.discount ? (
+                        $
+                        {product?.discount_price
+                            ? product?.discount_price
+                            : product?.price}{" "}
+                        {product?.discount_price ? (
                             <span className="text-xl md:text-3xl text-[#B6B6B6] line-through">
-                                $200
+                                ${product?.price}
                             </span>
                         ) : (
                             ""
                         )}{" "}
-                        {product.discount ? (
+                        {product?.discount ? (
                             <span className="text-[#FF404B]">
-                                {product.discount}
+                                {product?.discount}
                             </span>
                         ) : (
                             ""
@@ -189,7 +194,7 @@ function SingleProduct({ params }: Props) {
                     </div>
                 </div>
             </div>
-            <TabPanel product={product} />
+            <TabPanel product={product} relatedProducts={relatedProducts} />
         </div>
     );
 }
