@@ -1,7 +1,9 @@
 import { sql } from "@vercel/postgres";
 import { Product } from "../defenitions";
+import { unstable_noStore as noStore } from "next/cache";
 
 export async function fetchProducts() {
+    noStore();
     try {
         const data = await sql<Product>`SELECT
             p.id AS id,
@@ -41,6 +43,7 @@ export async function fetchProducts() {
 }
 
 export async function fetchSingleProduct(id: string) {
+    noStore();
     try {
         const data = await sql`SELECT
             p.id AS id,
@@ -82,6 +85,7 @@ export async function fetchSingleProduct(id: string) {
 }
 
 export async function fetchLatestProducts() {
+    noStore();
     try {
         const data = await sql<Product>`SELECT
             p.id AS id,
@@ -388,6 +392,7 @@ export async function fetchProductsByAvailability(stock_availability: string) {
 export async function fetchFilteredProducts(searchParams: {
     [key: string]: string | undefined;
 }) {
+    noStore();
     const category = searchParams["category"]?.length
         ? searchParams["category"]
         : null;
@@ -401,6 +406,9 @@ export async function fetchFilteredProducts(searchParams: {
         : null;
     let availability = searchParams["availability"]?.length
         ? searchParams["availability"]
+        : null;
+    const searchKey = searchParams["query"]?.length
+        ? searchParams["query"]
         : null;
     const page = searchParams["page"]?.length
         ? parseInt(searchParams["page"])
@@ -457,6 +465,15 @@ export async function fetchFilteredProducts(searchParams: {
             LEFT JOIN
                 colors co ON pc.color_id = co.id
             WHERE true
+                ${
+                    searchKey
+                        ? `AND (
+                    p.name ILIKE '%${searchKey}%'
+                    OR b.name ILIKE '%${searchKey}%'
+                    OR c.name ILIKE '%${searchKey}%'
+                )`
+                        : ""
+                }
                 ${category ? `AND c.id = '${category}'` : ""}
                 ${brand ? `AND b.id IN (${brand})` : ""}
                 ${color ? `AND co.id IN (${color})` : ""}
