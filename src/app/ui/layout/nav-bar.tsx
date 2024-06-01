@@ -10,12 +10,35 @@ import Link from "next/link";
 import React, { Suspense, useState } from "react";
 import SearchModal from "../home/search-modal";
 import { CategoryItem } from "@/app/lib/defenitions";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 type Props = { categoryList: CategoryItem[] };
 
 function Navbar({ categoryList }: Props) {
     const [showSearch, setShowSearch] = useState(false);
     const toggleSearch = () => setShowSearch((prev) => !prev);
+    const searchParams = useSearchParams();
+    const [query, setQuery] = useState(searchParams.get("query") ?? "");
+    const pathname = usePathname();
+    const { replace } = useRouter();
+    const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+        setQuery(event.target.value);
+    const handleSearch = () => {
+        const params = new URLSearchParams(searchParams);
+        if (query.length) {
+            params.set("query", query);
+        } else {
+            params.delete("query");
+        }
+        replace(`shop?${params.toString()}`);
+    };
+    const handleEnterKeyPress = (
+        event: React.KeyboardEvent<HTMLInputElement>
+    ) => {
+        if (event.key === "Enter") {
+            handleSearch();
+        }
+    };
     return (
         <div className="w-full bg-[#FFF] flex felx-row justify-between items-center py-4 px-5">
             <div className="flex felx-row justify-between items-center gap-5">
@@ -40,10 +63,16 @@ function Navbar({ categoryList }: Props) {
             </div>
             <div className="flex felx-row justify-between items-center gap-6">
                 <span className="hidden md:flex felx-row justify-between items-center bg-[#F1F1F1] rounded gap-1 py-3 px-2">
-                    <MagnifyingGlassIcon className="w-6 text-[#13101E]" />
+                    <MagnifyingGlassIcon
+                        className="w-6 text-[#13101E] cursor-pointer"
+                        onClick={handleSearch}
+                    />
                     <input
                         className="placeholder:text-[#626262] w-80 bg-transparent"
                         placeholder="Search for products or brands....."
+                        value={query}
+                        onChange={handleQueryChange}
+                        onKeyDown={handleEnterKeyPress}
                     />
                 </span>
                 <div className="flex felx-row justify-between items-center gap-5">
