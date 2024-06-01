@@ -16,11 +16,14 @@ function SearchModal({ show, toggle }: Props) {
     const pathname = usePathname();
     const { replace } = useRouter();
     const handleSearch = () => {
-        const params = new URLSearchParams(searchParams);
-        params.set("query", query);
         toggle();
-        setQuery("");
-        replace(`${pathname}?${params.toString()}`);
+        const params = new URLSearchParams(searchParams);
+        if (query.length) {
+            params.set("query", query);
+        } else {
+            params.delete("query");
+        }
+        replace(`shop?${params.toString()}`);
     };
     return (
         <div
